@@ -3,7 +3,7 @@ package lam.api.dto
 import lam.api.entity.Clientes
 
 data class ClientesResponse(
-    val id: Long,
+    val id: Int,
     val nombre: String,
     val apellido: String,
     val email: String,
@@ -13,12 +13,12 @@ data class ClientesResponse(
     companion object {
         fun fromEntity(c: Clientes): ClientesResponse =
             ClientesResponse(
-                id = c.id ?: 0L,
+                id = c.id ?: 0,
                 nombre = c.nombre,
                 apellido = c.apellido,
                 email = c.email,
-                telefono = c.telefono,
-                direccion = c.direccion
+                telefono = c.telefono ?: "",
+                direccion = c.direccion ?: ""
             )
     }
 }

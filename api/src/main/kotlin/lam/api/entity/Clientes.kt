@@ -12,20 +12,20 @@ import jakarta.persistence.Table
 class Clientes(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Int? = null,
 
-    @Column(nullable = false, length = 120)
+    @Column(nullable = false, length = 100)
     var nombre: String = "",
 
-    @Column(nullable = false, length = 120)
+    @Column(nullable = false, length = 100)
     var apellido: String = "",
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     var email: String = "",
 
-    @Column(nullable = false, length = 15)
-    var telefono: String = "",
+    @Column(nullable = true, length = 20)
+    var telefono: String? = null,
 
-    @Column(name = "dirección", nullable = false, length = 50)
-    var direccion: String = ""
+    @Column(nullable = true, length = 200)
+    var direccion: String? = null
 )

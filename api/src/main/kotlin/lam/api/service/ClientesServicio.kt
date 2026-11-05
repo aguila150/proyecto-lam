@@ -22,9 +22,12 @@ class ClientesService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Long): ClientesResponse {
+    fun obtener(id: Int): ClientesResponse {
         val cliente = clientesRepository.findById(id)
-            .orElseThrow { ClienteNoEncontradoException(id) }
+            .orElseThrow {
+                ClienteNoEncontradoException(id)
+            }
+
         return ClientesResponse.fromEntity(cliente)
     }
 
@@ -37,7 +40,9 @@ class ClientesService(
             telefono = req.telefono,
             direccion = req.direccion
         )
+
         val guardado = clientesRepository.save(nuevoCliente)
+
         return ClientesResponse.fromEntity(guardado)
     }
 }

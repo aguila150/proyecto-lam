@@ -5,4 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ClientesRepository : JpaRepository<Clientes, Long>
+interface ClientesRepository : JpaRepository<Clientes, Int>

@@ -27,13 +27,18 @@ class ClientesControlador(
     }
 
     @GetMapping("/{id}")
-    fun obtenerPorId(@PathVariable id: Long): ResponseEntity<ClientesResponse> {
+    fun obtenerPorId(@PathVariable id: Int): ResponseEntity<ClientesResponse> {
         return ResponseEntity.ok(clientesService.obtener(id))
     }
 
     @PostMapping
-    fun crear(@Valid @RequestBody req: ClientesRequest): ResponseEntity<ClientesResponse> {
+    fun crear(
+        @Valid @RequestBody req: ClientesRequest
+    ): ResponseEntity<ClientesResponse> {
         val creado = clientesService.crear(req)
-        return ResponseEntity.status(HttpStatus.CREATED).body(creado)
+
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(creado)
     }
 }
